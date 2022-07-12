@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col" class="table-header-f">Date</th>
+                {%if user.is_superuser %}
+                <th scope="col">Company</th>
+                {% endif %}
+                <th scope="col">Language</th>
+                <th scope="col">Patient</th>
+                {%if user.is_superuser %}
+                <th scope="col">PO/ID</th>
+                {% endif %}
+                <th scope="col">Type</th>
+                <th scope="col">Hours</th>
+                {%if user.is_superuser %}
+                <th scope="col">Hourly Rate</th>
+                <th scope="col">Miles</th>
+                <th scope="col">Mileage Rate</th>
+                {% endif %}
+                <th scope="col">Address</th>
+                {%if user.is_superuser %}
+                <th scope="col">Flat Rate</th>
+                {% endif %}
+                <th scope="col">Parking</th>
+                {%if user.is_superuser %}
+                <th scope="col">Total</th>
+                {% endif %}
+                <th scope="col">Interpreter</th>
+                {%if user.is_superuser %}
+                <th scope="col">Interpreter Pay</th>
+                {% endif %}
+                <th scope="col">Completed</th>
+                {% if user.is_superuser %}
+                <th scope="col">Invoiced</th>
+                <th scope="col">Paid</th>
+                {% endif %}
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for assignment in assignments %}
+                {% if assignment.interpreter == user.get_username or user.is_superuser %} <!-- IF (1)-->
+              <tr>
+                <td>{{assignment.date}}</td>
+                {%if user.is_superuser %}
+                <td>{{assignment.company}}</td>
+                {% endif %}
+                <td>{{assignment.language}}</td>
+                <td>{{assignment.patient}}</td>
+                {%if user.is_superuser %}
+                <td>{{assignment.po_num}}</td>
+                {% endif %}
+                <td>{{assignment.type}}</td>
+                <td>{{assignment.hours}}</td>
+                {%if user.is_superuser %}
+                <td>{{assignment.hourly_rate}}</td>
+                <td>{{assignment.miles}}</td>
+                <td>{{assignment.mileage_rate}}</td>
+                {% endif %}
+                <td>{{assignment.address}}</td>
+                {%if user.is_superuser %}
+                <td>{{assignment.flat_rate}}</td>
+                {% endif %}
+                <td>{{assignment.parking}}</td>
+                {%if user.is_superuser %}
+                <td>{{assignment.total}}</td>
+                {% endif %}
+                <td>
+                    {%if assignment.interpreter|upper == 'NONE'%}
+                    <div class="dropdown me-3">
+                      <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">Offer</button>
+                      <ul class="dropdown-menu">
+                        <li><h6 class="dropdown-header">Interpreters</h6></li>
+                        {% for u in users %}
+                        <li><a class="dropdown-item" href="{% url 'offer.assignment' pk=assignment.id user=u.username email=u.email%}">{{u.username}}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    {% else %}
+                    {{assignment.interpreter}}
+                    {% endif %}
+                </td>
+                <td>{{assignment.interpreter_payment}}</td>
+                <td>
+                    {%if assignment.completed %}
+                    &#10004;
+                    {% else %}
+                    &#10060;
+                    {% endif %}
+                </td>
+                {%if user.is_superuser %}
+                <td>
+                    {%if assignment.is_invoiced %}
+                    &#10004;
+                    {% else %}
+                    &#10060;
+                    {% endif %}
+                </td>
+                <td>
+                    {% if assignment.is_paid %}
+                    &#10004;
+                    {% else %}
+                    &#10060;
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if user.is_superuser %}
+                <td><a href="{% url 'assignments.edit' pk=assignment.id %}" class="btn btn-outline-secondary btn-sm">Edit</a></td>
+                {% else %}
+                <td><a href="{% url 'assignments.limited_edit' pk=assignment.id %}" class="btn btn-outline-primary btn-sm">Edit Hours/Parking</a></td>
+                {% endif %}
+                </tr>
+                {% endif %}
+
+              {% endfor %} <!-- END IF (1)-->
+            </tbody>
+          </table> 
+    </body>  
+
+{% endblock %}

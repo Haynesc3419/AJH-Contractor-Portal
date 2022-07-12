@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Language</th>
+        <th scope="col">Patient</th>
+        <th scope="col">Type</th>
+        <th scope="col">Address</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for assignment in assignments %}
+        {% if user.get_username in assignment.offered_to %} <!-- IF (1)-->
+      <tr>
+        <td>{{assignment.date}}</td>
+        <td>{{assignment.language}}</td>
+        <td>{{assignment.patient}}</td>
+        <td>{{assignment.type}}</td>
+        <td>{{assignment.address}}</td>
+        {% for u in users %}
+        {% if user.get_username == u.username %}
+        <td><a type="button" class="btn btn-success" href="{% url 'assignments.accept' pk=assignment.id user=user.get_username email=u.email%}">Accept</a></td>
+        {% endif %}
+        {% endfor %} 
+        <td><a type="button" class="btn btn-danger" href="{% url 'assignments.deny' pk=assignment.id %}">Deny</a></td>
+        {% endif %}
+      {% endfor %} <!-- END IF (1)-->
+    </tbody>
+  </table> 
+
+{% endblock %}

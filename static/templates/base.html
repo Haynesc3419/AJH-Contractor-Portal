@@ -1,0 +1,72 @@
+<html>
+  {% load static %}
+    <head>
+        <title>AJH Interpretations</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+      </head>
+
+    <body>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">
+                <img src="/static/assets/ajh_placeholder3.png" style="vertical-align:middle;margin:0px 20px" width="100" height="50" alt="">
+                AJH Interpretations Portal
+              </a>
+              {% if user.is_authenticated %}
+            <div class="btn-group">
+              <!-- Dropdown Menu -->
+              <div class="dropdown me-3">
+                <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"> Filter </button>
+                <ul class="dropdown-menu">
+                  <!-- Filter Date -->
+                  <li><h6 class="dropdown-header">Date</h6></li>
+                  <form class="px-4 py-1" method="GET">
+                    <div class="mb-1">
+                      <input type="date" name="date" placeholder="YYYY-MM-DD">
+                      <button type="submit" class="btn btn-primary btn-sm my-2">Apply</button>
+                    </div>
+                  </form>
+                  <!-- Filter Company -->
+                  {% if user.is_superuser %}
+                  <li><h6 class="dropdown-header">Company</h6></li>
+                  <li><a class="dropdown-item" href="/">All</a></li>
+                  {% for company in companies %}
+                  <li><a class="dropdown-item" href="?company={{company.name}}">{{company.name}}</a></a></li>
+                  {% endfor %}
+                  {% endif %}
+                </ul>
+              </div>
+              <!-- General User Functions -->
+              <div class="dropdown me-3">
+                <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">Pages </button>
+                <ul class="dropdown-menu">
+                    <div class="mb-1">
+                      <li><a href="{% url 'assignments' %}" class="dropdown-item ">Assignments</a></li>
+                      <li><a href="{% url 'assignments.offers' %}" class="dropdown-item ">Offers</a></li>
+                    </ul>
+              </div>
+              <!-- Admin Toolset Buttons -->
+              {% if user.is_superuser %}
+              <div class="dropdown me-3">
+                <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">Admin </button>
+                <ul class="dropdown-menu">
+                    <div class="mb-1">
+                      <li><a href="{% url 'assignments.create' %}" class="dropdown-item ">Add Assignment</a></li>
+                      <li><a href="{% url 'interpreter.register' %}" class="dropdown-item">Add Interpreter</a></li>
+                      <li><a href="{% url 'company.register' %}" class="dropdown-item ">Add Company</a></li>
+                      <li><a href="{% url 'assignments.export' %}" class="dropdown-item">Export Excel</a></li>
+                    </div>
+                    </ul>
+              </div>
+              {% endif %}
+                <a type="button" href="{% url 'home' %}" class="btn btn-outline-dark me-3">Logout</a>
+                {% endif %}
+            </div>
+            
+        </nav>
+      {% block content %}
+      {% endblock %}
+        
+</html>

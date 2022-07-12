@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+<!-- Cross-Site Request Forgery (token required for django to implement request) -->
+<form method='POST'>{% csrf_token %}
+    {{ form.as_p}}
+    <p>Please make sure that the name inputted is typed as intended as it is difficult to change</p>
+    <button type="submit" class="btn btn-primary my-1">Submit</button>
+</form>
+{% if form.errors %}
+<div class="alert alert-danger my-5">
+    {{form.errors.title.as_text}}
+</div>
+{% endif %}
+<a href="{% url 'assignments' %}" class="btn btn-secondary">Cancel</a>
+
+{% endblock %} 
