@@ -83,10 +83,10 @@ WSGI_APPLICATION = 'AJH.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test',
-        'USER': 'postgres',
-        'PASSWORD': 'Test123',
-        'HOST': 'localhost',
+        'NAME': 'dafgvbm8bgat6h',
+        'USER': 'hngxaylnnkttqm',
+        'PASSWORD': '8e3a8ef04c15cdfd1c0ac0a9e72d51318634e5dfa539f01c1fec8b10df70f18b',
+        'HOST': 'ec2-52-54-212-232.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
