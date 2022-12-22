@@ -77,7 +77,6 @@ psutil==5.9.2
 psycopg2==2.9.3
 pure-eval==0.2.2
 pycparser==2.21
-pygame==2.0.2
 Pygments==2.13.0
 pyOpenSSL==21.0.0
 pyparsing==3.0.9
