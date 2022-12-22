@@ -101,6 +101,7 @@ traitlets==5.4.0
 trio==0.19.0
 trio-websocket==0.9.2
 turtle==0.0.1
+pyqt5==5.15.7
 urllib3==1.26.7
 virtualenv==20.15.1
 virtualenv-clone==0.5.7
