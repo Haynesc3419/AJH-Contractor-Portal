@@ -3,7 +3,7 @@ async-generator==1.10
 attrs==21.4.0
 awsebcli
 boto3>=1.2.1
-botocore>=1
+botocore>=1.25
 cement>=2.0
 certifi==2021.10.8
 cffi==1.15.0
