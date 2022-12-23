@@ -1,1 +1,1 @@
-web gunicorn AJH/wsgi.py
+web gunicorn AJH.wsgi
