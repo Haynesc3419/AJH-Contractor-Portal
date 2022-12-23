@@ -1,3 +1,6 @@
+anyio==3.6.1
+argon2-cffi==21.3.0
+argon2-cffi-bindings==21.2.0
 asgiref==3.4.1
 async-generator==1.10
 attrs==21.4.0
@@ -20,6 +23,7 @@ future==0.16.0
 h11==0.12.0
 idna==3.3
 jmespath==0.10.0
+json5==0.9.10
 lxml==4.7.1
 mysql-connector-python==8.0.29
 openpyxl==3.0.9
@@ -34,11 +38,15 @@ python-dateutil==2.8.2
 python-docx==0.8.11
 pytz==2021.3
 PyYAML>=3.0
+PyQt5==5.15.7
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.11.0
 requests==2.26.0
 s3transfer==0.6.0
 semantic-version==2.8.5
 six>=1.0.0
 sniffio==1.2.0
+s3transfer==0.6.0
 sortedcontainers==2.4.0
 soupsieve==2.3.1
 sqlparse==0.4.2
@@ -49,6 +57,9 @@ urllib3==1.26.7
 virtualenv==20.15.1
 virtualenv-clone==0.5.7
 wcwidth==0.1.9
+wsproto==1.0.0
+webencodings==0.5.1
+websocket-client==1.4.1
 wsproto==1.0.0
 xlwt==1.3.0
 gunicorn==20.1.0
