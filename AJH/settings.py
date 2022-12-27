@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-lu2u7xixlkwfw%515%-d%#2*)a^8^mxp$781bx7-%isd5iso@9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','ajhaws-env-14.eba-us7qwgrc.us-west-2.elasticbeanstalk.com','ajhinterpretations.com','ajhinterpretations.com']
+ALLOWED_HOSTS = ['127.0.0.1','ajh-portal.herokuapp.com','ajhinterpretations.com','ajhinterpretations.com']
 
 # Application definition
 
