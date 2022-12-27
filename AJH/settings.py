@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-lu2u7xixlkwfw%515%-d%#2*)a^8^mxp$781bx7-%isd5iso@9'
+# SECRET_KEY = redacted
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dafgvbm8bgat6h',
         'USER': 'hngxaylnnkttqm',
-        'PASSWORD': '8e3a8ef04c15cdfd1c0ac0a9e72d51318634e5dfa539f01c1fec8b10df70f18b',
+        # 'PASSWORD': redacted
         'HOST': 'ec2-52-54-212-232.compute-1.amazonaws.com',
         'PORT': '5432',
     }
@@ -149,5 +149,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 AWS_ACCESS_KEY_ID = 'AKIAVXD7TGYO26EWO6DY'
-AWS_SECRET_ACCESS_KEY = 'cSG97S8oKyjWqelwooXeEHN3osDCiXnuC2Hn03fh'
+# AWS_SECRET_ACCESS_KEY = redacted
 AWS_DEFAULT_ACL = None
