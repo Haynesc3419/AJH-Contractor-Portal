@@ -81,6 +81,7 @@ def export_excel(request):
 class AssignmentsUpdateView(UpdateView):
     model = Assignment
     success_url = ''
+    template_name = 'assignments/assignment_form.html'
     form_class = AssignmentForm
 
     def get_success_url(self):
@@ -97,6 +98,7 @@ class AssignmentInterpreterUpdateView(UpdateView):
 class AssignmentCreateView(CreateView):
     model = Assignment
     success_url = ''
+    template_name = 'assignments/assignment_form.html'
     form_class = AssignmentForm
 
     def get_success_url(self):
